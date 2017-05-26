@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/css/main.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous" defer></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" defer></script>
+        <script src="assets/js/jquery.combobox.js" defer></script> 
+        <script src="assets/js/main.js" defer></script> 
+    </head>
+    
+    <body ng-app="myApp" class="container">
+        <h1>AngularJS + jQuery</h1>
+        <!--<section>
+            <input-control></input-control>
+            <output-control></output-control>
+        </section>-->
+        <section>
+            <not-select class="combobox clearfix" id='combobox-1'>
+                <option value="01">val 01</option>
+                <option value="02">val 02</option>
+                <option value="45">val 45</option>
+                <option value="46">val 46</option>
+                <option value="47">val 47</option>
+                <option value="48">val 48</option>
+            </not-select>
+            <jq-combobox size="10" class="combobox">
+                <option value="101">val 101</option>
+                <option value="102">val 102</option>
+                <option value="145">val 145</option>
+                <option value="146">val 146</option>
+                <option value="147">val 147</option>
+                <option value="148">val 148</option>
+                <button ng-click="$getValue()"></button>
+            </jq-combobox>
+            <not-select class="combobox">
+                <option value="01">val 101</option>
+                <option value="02">val 102</option>
+                <option value="45">val 145</option>
+                <option value="46">val 146</option>
+                <option value="47">val 147</option>
+                <option value="48">val 148</option>
+            </not-select>
+        </section>
+    </body>
+    
+    <script type="text/ng-template" id="inputTemplate">
+        <div>
+            <input type="text" ng-model="$ctrl.inputValue">
+            <button class="btn" ng-click="$ctrl.addValue()">Click me</button>
+        </div>
+    </script>
+    
+    <script type="text/ng-template" id="outputTemplate">
+        <div>
+            <h2>Results:</h2>
+            <ul>
+                <li ng-repeat="value in $ctrl.values track by $index">{{value}}</li>
+            </ul>
+        </div>
+    </script>
+</html>
