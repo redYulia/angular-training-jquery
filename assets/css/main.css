@@ -61,16 +61,10 @@ input {
     display: table;
     clear: both;
 }
-input-control div, 
-output-control div{
+.combobox {
     max-width: 600px;
     width: 100%;
     margin: 15px auto;
-}
-input-control div{
-    text-align: center;
-}
-output-control div{
     padding: 15px;
     background-color: #fff;
     border-radius: 4px;
@@ -81,6 +75,9 @@ output-control div{
     margin: 10px auto;
     max-width: 600px;
     display: block;
+}
+input[type = 'number'] {
+    width: auto;
 }
 option {
     cursor: pointer;

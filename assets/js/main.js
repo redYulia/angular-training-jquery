@@ -1,5 +1,18 @@
 var app = angular.module("myApp", []);
-app.controller('mainCtrl', function($scope) {});
+app.controller('mainCtrl', function($scope) {
+    $scope.getValue = function($event){
+        var target = angular.element($event.currentTarget).parent();
+        $scope.$broadcast('$getValue', target, $scope.value);
+        console.log('get value - ', $scope.value);
+    }
+    $scope.setValue = function($event, index){
+        var target = angular.element($event.currentTarget).parent();
+        if (index) {
+            $scope.$broadcast('$setValue', index, target);
+            console.log('set value -', index);
+        }
+    }
+});
 function inputCtrl($rootScope) {
     this.inputValue = '';
     function addValue() {
@@ -34,22 +47,16 @@ app.component('outputControl', {
 
 app.directive('jqCombobox', [function() {
     return {
-        restrict: 'AE',
-        scope: {
-          'model': '='
-        },
+        restrict: 'A',
         link: function(scope, elem, attrs) {
             console.log(elem);
-            $(elem).combobox({});
-            scope.$on("$getValue", function(){
-                element.myPlugin("getValue");
+            angular.element(elem).combobox(scope.$eval(attrs.jqCombobox));
+            scope.$on("$getValue", function(event, target){
+                scope.value = target.combobox("getValue");
             });
-            scope.$on("$setValue", function(){
-                element.myPlugin("setValue");
+            scope.$on("$setValue", function(event, index, target){
+                target.combobox("setValue", index);
             });
-            /*scope.$watch('model', function(newVal) {
-                $slider.slider('value', newVal);
-            });*/
         }
     };
 }]);

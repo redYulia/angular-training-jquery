@@ -34,14 +34,14 @@
                         console.log(options[i].selected, options);
                     }  */    
                     console.log($this.data('combobox').selectedIndex);
-                    console.log($this.find('option:selected'));
+                    //console.log($this.find('option:selected'));
                 });
             });
         },
         getValue : function() {
             var $this = $(this),
                 data = $this.data('combobox');
-            console.log("YYYY", data);
+            //console.log("YYYY", data);
             return data.selectedIndex;
         },
         setValue : function(index) {
