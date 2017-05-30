@@ -49,13 +49,23 @@ app.directive('jqCombobox', [function() {
     return {
         restrict: 'A',
         link: function(scope, elem, attrs) {
-            console.log(elem);
-            angular.element(elem).combobox(scope.$eval(attrs.jqCombobox));
+            var onValueChanged = function(oldVal, newVal){
+                console.log('changed #combobox-ang');
+            }
+            var settings = {};
+            var optionsArr = attrs.options.split(',');
+            settings.options = optionsArr;
+            settings.value = parseInt(attrs.value);
+            settings.onValueChanged = onValueChanged;
+            
+            console.log('ang settings', settings);
+            
+            angular.element(elem).combobox(settings);
             scope.$on("$getValue", function(event, target){
                 scope.value = target.combobox("getValue");
             });
-            scope.$on("$setValue", function(event, index, target){
-                target.combobox("setValue", index);
+            scope.$on("$setValue", function(event, value, target){
+                target.combobox("setValue", value);
             });
         }
     };
