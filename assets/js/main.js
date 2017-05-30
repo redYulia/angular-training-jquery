@@ -58,8 +58,6 @@ app.directive('jqCombobox', [function() {
             settings.value = parseInt(attrs.value);
             settings.onValueChanged = onValueChanged;
             
-            console.log('ang settings', settings);
-            
             angular.element(elem).combobox(settings);
             scope.$on("$getValue", function(event, target){
                 scope.value = target.combobox("getValue");

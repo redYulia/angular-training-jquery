@@ -14,7 +14,7 @@
         <h1>AngularJS + jQuery</h1>
         <section ng-controller="mainCtrl">
             <div class="combobox" id='combobox-1'></div>
-            <div jq-combobox options="1,2,3,6,7,8" value="3" class="combobox">
+            <div jq-combobox options="1,2,3,6,7,8" value="3" class="combobox" id='combobox-3'>
                 <button ng-click="getValue($event)" class="btn">get value</button>
                 <button ng-click="setValue($event, index)" class="btn">set value</button>
                 <input type="number" ng-model="index" min="0" max="999"/>
